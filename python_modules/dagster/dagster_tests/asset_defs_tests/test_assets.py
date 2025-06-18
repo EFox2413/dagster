@@ -182,7 +182,7 @@ def test_retain_group():
 def test_retain_freshness_policy():
     fp = LegacyFreshnessPolicy(maximum_lag_minutes=24.5)
 
-    @asset(freshness_policy=fp)
+    @asset(legacy_freshness_policy=fp)
     def bar():
         pass
 
