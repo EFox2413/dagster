@@ -1,0 +1,467 @@
+---
+title: 'dg cli'
+title_meta: 'dg cli API Documentation - Build Better Data Pipelines | Python Reference Documentation for Dagster'
+description: 'dg cli Dagster API | Comprehensive Python API documentation for Dagster, the data orchestration platform. Learn how to build, test, and maintain data pipelines with our detailed guides and examples.'
+last_update:
+  date: '2025-05-29'
+custom_edit_url: null
+---
+
+<div class="section" id="dg-cli">
+
+
+# dg CLI
+
+<div class="section" id="dg-check">
+## dg check
+
+Commands for checking the integrity of your Dagster code.
+
+    ```shell
+    dg check [OPTIONS] COMMAND [ARGS]...
+    ```
+Commands:
+
+<dl>
+
+    <dt>defs</dt>
+    <dd>
+
+    Loads and validates your Dagster definitions using a Dagster instance.
+
+    > 
+
+    If run inside a deployment directory, this command will launch all code locations in the
+
+    deployment. If launched inside a code location directory, it will launch only that code
+
+    location.
+
+    When running, this command sets the environment variable <cite>DAGSTER_IS_DEFS_VALIDATION_CLI=1</cite>.
+
+    This environment variable can be used to control the behavior of your code in validation mode.
+
+    This command returns an exit code 1 when errors are found, otherwise an exit code 0.
+
+
+
+
+</dd>
+
+</dl>
+<dl>
+    <dt>yaml</dt>
+    <dd>
+    Check defs.yaml files against their schemas, showing validation errors.
+    </dd>
+
+</dl>
+</div>
+
+
+<div class="section" id="dg-dev">
+## dg dev
+
+Start a local instance of Dagster.
+
+If run inside a workspace directory, this command will launch all projects in the
+workspace. If launched inside a project directory, it will launch only that project.
+
+    ```shell
+    dg dev [OPTIONS]
+    ```
+Options:
+
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-dev-code-server-log-level'>--code-server-log-level \<code_server_log_level><a href="#cmdoption-dg-dev-code-server-log-level" class="hash-link"></a></Link></dt>
+    <dd>
+
+    Set the log level for code servers spun up by dagster services.
+
+    Default: `'warning'`Options: critical | error | warning | info | debug
+
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-dev-log-level'>--log-level \<log_level><a href="#cmdoption-dg-dev-log-level" class="hash-link"></a></Link></dt>
+    <dd>
+
+    Set the log level for dagster services.
+
+    Default: `'info'`Options: critical | error | warning | info | debug
+
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-dev-log-format'>--log-format \<log_format><a href="#cmdoption-dg-dev-log-format" class="hash-link"></a></Link></dt>
+    <dd>
+
+    Format of the logs for dagster services
+
+    Default: `'colored'`Options: colored | json | rich
+
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-dev-p'>-p, --port \<port><a href="#cmdoption-dg-dev-p" class="hash-link"></a></Link></dt>
+    <dd>
+    Port to use for the Dagster webserver.
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-dev-h'>-h, --host \<host><a href="#cmdoption-dg-dev-h" class="hash-link"></a></Link></dt>
+    <dd>
+    Host to use for the Dagster webserver.
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-dev-live-data-poll-rate'>--live-data-poll-rate \<live_data_poll_rate><a href="#cmdoption-dg-dev-live-data-poll-rate" class="hash-link"></a></Link></dt>
+    <dd>
+
+    Rate at which the dagster UI polls for updated asset data (in milliseconds)
+
+    Default: `2000`
+
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-dev-check-yaml'>--check-yaml, --no-check-yaml<a href="#cmdoption-dg-dev-check-yaml" class="hash-link"></a></Link></dt>
+    <dd>
+    Whether to schema-check defs.yaml files for the project before starting the dev server.
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-dev-path'>--path \<path><a href="#cmdoption-dg-dev-path" class="hash-link"></a></Link></dt>
+    <dd>
+    Specify a directory to use to load the context for this command. This will typically be a folder with a dg.toml or pyproject.toml file in it.
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-dev-verbose'>--verbose<a href="#cmdoption-dg-dev-verbose" class="hash-link"></a></Link></dt>
+    <dd>
+    Enable verbose output for debugging.
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-dev-disable-cache'>--disable-cache<a href="#cmdoption-dg-dev-disable-cache" class="hash-link"></a></Link></dt>
+    <dd>
+    Disable the cache..
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-dev-cache-dir'>--cache-dir \<cache_dir><a href="#cmdoption-dg-dev-cache-dir" class="hash-link"></a></Link></dt>
+    <dd>
+    Specify a directory to use for the cache.
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-dev-m'>-m, --module-name \<module_name><a href="#cmdoption-dg-dev-m" class="hash-link"></a></Link></dt>
+    <dd>
+    Specify module or modules (flag can be used multiple times) where dagster definitions reside as top-level symbols/variables and load each module as a code location in the current python environment.
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-dev-f'>-f, --python-file \<python_file><a href="#cmdoption-dg-dev-f" class="hash-link"></a></Link></dt>
+    <dd>
+    Specify python file or files (flag can be used multiple times) where dagster definitions reside as top-level symbols/variables and load each file as a code location in the current python environment.
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-dev-d'>-d, --working-directory \<working_directory><a href="#cmdoption-dg-dev-d" class="hash-link"></a></Link></dt>
+    <dd>
+    Specify working directory to use when loading the repository or job
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-dev-w'>-w, --workspace \<workspace><a href="#cmdoption-dg-dev-w" class="hash-link"></a></Link></dt>
+    <dd>
+    Path to workspace file. Argument can be provided multiple times.
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-dev-empty-workspace'>--empty-workspace<a href="#cmdoption-dg-dev-empty-workspace" class="hash-link"></a></Link></dt>
+    <dd>
+    Allow an empty workspace
+    </dd>
+
+</dl>
+Environment variables:
+
+<dl>
+
+    <dt>DAGSTER_MODULE_NAME</dt>
+    <dd>
+    > 
+
+    Provide a default for [`--module-name`](#cmdoption-dg-dev-m)
+
+
+
+
+</dd>
+
+</dl>
+<dl>
+
+    <dt>DAGSTER_PYTHON_FILE</dt>
+    <dd>
+    > 
+
+    Provide a default for [`--python-file`](#cmdoption-dg-dev-f)
+
+
+
+
+</dd>
+
+</dl>
+<dl>
+
+    <dt>DAGSTER_WORKING_DIRECTORY</dt>
+    <dd>
+    > 
+
+    Provide a default for [`--working-directory`](#cmdoption-dg-dev-d)
+
+
+
+
+</dd>
+
+</dl>
+</div>
+
+
+<div class="section" id="dg-docs">
+
+
+## dg docs
+
+Commands for generating docs from your Dagster code.
+
+    ```shell
+    dg docs [OPTIONS] COMMAND [ARGS]...
+    ```
+Commands:
+
+<dl>
+    <dt>build</dt>
+    <dd>
+    Build a static version of the Dagster components docs, to be served by a static file server.
+    </dd>
+
+</dl>
+</div>
+
+
+<div class="section" id="dg-launch">
+
+
+## dg launch
+
+Launch a Dagster run.
+
+    ```shell
+    dg launch [OPTIONS]
+    ```
+Options:
+
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-launch-assets'>--assets \<assets><a href="#cmdoption-dg-launch-assets" class="hash-link"></a></Link></dt>
+    <dd>
+    Comma-separated Asset selection to target
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-launch-job'>--job \<job><a href="#cmdoption-dg-launch-job" class="hash-link"></a></Link></dt>
+    <dd>
+    Job to target
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-launch-partition'>--partition \<partition><a href="#cmdoption-dg-launch-partition" class="hash-link"></a></Link></dt>
+    <dd>
+    Asset partition to target
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-launch-partition-range'>--partition-range \<partition_range><a href="#cmdoption-dg-launch-partition-range" class="hash-link"></a></Link></dt>
+    <dd>
+    Asset partition range to target i.e. \<start>…\<end>
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-launch-config-json'>--config-json \<config_json><a href="#cmdoption-dg-launch-config-json" class="hash-link"></a></Link></dt>
+    <dd>
+    JSON string of config to use for the launched run.
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-launch-c'>-c, --config \<config><a href="#cmdoption-dg-launch-c" class="hash-link"></a></Link></dt>
+    <dd>
+    Specify one or more run config files. These can also be file patterns. If more than one run config file is captured then those files are merged. Files listed first take precedence.
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-launch-path'>--path \<path><a href="#cmdoption-dg-launch-path" class="hash-link"></a></Link></dt>
+    <dd>
+    Specify a directory to use to load the context for this command. This will typically be a folder with a dg.toml or pyproject.toml file in it.
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-launch-verbose'>--verbose<a href="#cmdoption-dg-launch-verbose" class="hash-link"></a></Link></dt>
+    <dd>
+    Enable verbose output for debugging.
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-launch-disable-cache'>--disable-cache<a href="#cmdoption-dg-launch-disable-cache" class="hash-link"></a></Link></dt>
+    <dd>
+    Disable the cache..
+    </dd>
+
+</dl>
+<dl>
+    <dt><Link class="anchor" id='cmdoption-dg-launch-cache-dir'>--cache-dir \<cache_dir><a href="#cmdoption-dg-launch-cache-dir" class="hash-link"></a></Link></dt>
+    <dd>
+    Specify a directory to use for the cache.
+    </dd>
+
+</dl>
+</div>
+
+
+<div class="section" id="dg-list">
+
+
+## dg list
+
+Commands for listing Dagster entities.
+
+    ```shell
+    dg list [OPTIONS] COMMAND [ARGS]...
+    ```
+Commands:
+
+<dl>
+    <dt>components</dt>
+    <dd>
+    List all available Dagster component types in the current Python environment.
+    </dd>
+
+</dl>
+<dl>
+    <dt>defs</dt>
+    <dd>
+    List registered Dagster definitions in the current project environment.
+    </dd>
+
+</dl>
+<dl>
+    <dt>envs</dt>
+    <dd>
+    List environment variables from the .env file of the current project.
+    </dd>
+
+</dl>
+<dl>
+    <dt>plugin-modules</dt>
+    <dd>
+    List dg plugins and their corresponding objects in the current Python environment.
+    </dd>
+
+</dl>
+<dl>
+    <dt>projects</dt>
+    <dd>
+    List projects in the current workspace.
+    </dd>
+
+</dl>
+</div>
+
+
+<div class="section" id="dg-scaffold">
+## dg scaffold
+
+Commands for scaffolding Dagster entities.
+
+    ```shell
+    dg scaffold [OPTIONS] COMMAND [ARGS]...
+    ```
+Commands:
+
+<dl>
+    <dt>build-artifacts</dt>
+    <dd>
+    Scaffolds a Dockerfile to build the given Dagster project or workspace.
+    </dd>
+
+</dl>
+<dl>
+
+    <dt>component</dt>
+    <dd>
+
+    Scaffold of a custom Dagster component type.
+
+    > 
+
+    This command must be run inside a Dagster project directory. The component type scaffold
+
+    will be placed in submodule <cite>\<project_name>.lib.\<name></cite>.
+
+
+
+
+</dd>
+
+</dl>
+<dl>
+    <dt>defs</dt>
+    <dd>
+    Commands for scaffolding Dagster code.
+    </dd>
+
+</dl>
+<dl>
+
+    <dt>github-actions</dt>
+    <dd>
+
+    Scaffold a GitHub Actions workflow for a Dagster project.
+
+    > 
+
+    This command will create a GitHub Actions workflow in the <cite>.github/workflows</cite> directory.
+
+
+
+
+</dd>
+
+</dl>
+</div></div>

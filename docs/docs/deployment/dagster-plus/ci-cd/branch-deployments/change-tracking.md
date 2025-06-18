@@ -18,6 +18,8 @@ You can also apply filters to show only new and changed assets in the UI. This m
 
 **Note:** The default main deployment is `prod`. To configure a different deployment as the main deployment, [create a branch deployment using the dagster-cloud CLI](/deployment/dagster-plus/ci-cd/branch-deployments/using-branch-deployments-with-the-cli) and specify it using the optional `--base-deployment-name` parameter.
 
+DOCUMENT --snapshot-base-condition
+
 ## Supported change types
 
 Change Tracking can detect the following changes to assets:
